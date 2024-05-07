@@ -1,22 +1,13 @@
 class Solution {
 public:
-  bool isAnagram(string s, string t) {
-    int length = 26;
-    vector<int> s_count(length, 0);
-    vector<int> t_count(length, 0);
+    bool isAnagram(string s, string t) {
+        vector<int> first_string(26, 0);
+        for (int i; i < s.size(); ++i)
+            first_string[int(s[i])]++;
+        vector<int> second_string(26, 0);
+        for (int i; i < t.size(); ++i)
+            second_string[int(t[i])]++;
 
-    for (char i : s) {
-      s_count[i - 'a']++;
+        return first_string == second_string;
     }
-    for (char i : t) {
-      t_count[i - 'a']++;
-    }
-
-    for (int i = 0; i < length; i++) {
-      if (s_count[i] != t_count[i])
-        return false;
-    }
-
-    return true;
-  }
 };
